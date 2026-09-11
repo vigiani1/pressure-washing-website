@@ -1,0 +1,328 @@
+---
+const FORM_ID = 'e7f320d2-48df-4622-ae13-85b1a98c4fe5';
+
+const propertyTypes = [
+  'Single-Family Home',
+  'Townhouse',
+  'Duplex',
+  'Multi-Family',
+  'Commercial Building'
+];
+
+const services = [
+  'Driveway Cleaning',
+  'House Washing',
+  'Deck & Patio Restoration',
+  'Roof Cleaning',
+  'Commercial Exterior',
+  'Gutter Cleaning',
+  'Fence Cleaning'
+];
+---
+
+<section id="get-free-estimate" class="py-20 md:py-32 bg-forest">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <div class="inline-block mb-4">
+          <span class="text-sm font-bold text-lime uppercase tracking-wider">— GET STARTED</span>
+        </div>
+        <h2 class="font-display font-bold text-4xl md:text-6xl text-cream mb-4">
+          Request Your <span class="font-serif italic text-lime">Free</span> Estimate
+        </h2>
+        <p class="text-cream/70 text-lg">
+          No hidden fees, ever. Get your quote in 24 hours.
+        </p>
+      </div>
+
+      <!-- Progress Indicator -->
+      <div class="flex items-center justify-center gap-2 mb-12">
+        <div class="step-indicator flex items-center gap-2" data-step="0">
+          <div class="w-10 h-10 rounded-full bg-lime text-forest flex items-center justify-center font-bold">1</div>
+          <span class="hidden md:inline text-sm font-medium text-cream">Property</span>
+        </div>
+        <div class="w-12 h-0.5 bg-cream/20"></div>
+        <div class="step-indicator flex items-center gap-2" data-step="1">
+          <div class="w-10 h-10 rounded-full bg-cream/10 text-cream/60 flex items-center justify-center font-bold">2</div>
+          <span class="hidden md:inline text-sm font-medium text-cream/50">Services</span>
+        </div>
+        <div class="w-12 h-0.5 bg-cream/20"></div>
+        <div class="step-indicator flex items-center gap-2" data-step="2">
+          <div class="w-10 h-10 rounded-full bg-cream/10 text-cream/60 flex items-center justify-center font-bold">3</div>
+          <span class="hidden md:inline text-sm font-medium text-cream/50">Contact</span>
+        </div>
+        <div class="w-12 h-0.5 bg-cream/20"></div>
+        <div class="step-indicator flex items-center gap-2" data-step="3">
+          <div class="w-10 h-10 rounded-full bg-cream/10 text-cream/60 flex items-center justify-center font-bold">4</div>
+          <span class="hidden md:inline text-sm font-medium text-cream/50">Details</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form data-form-id={FORM_ID} class="bg-forest-light rounded-3xl p-8 md:p-12 shadow-layered-lg">
+        <!-- Step 1: Property Type -->
+        <fieldset data-step="0" class="space-y-6">
+          <div>
+            <label for="quote-property-type" class="block text-sm font-bold text-cream mb-2 uppercase tracking-wider">
+              Property Type <span class="text-lime">*</span>
+            </label>
+            <select id="quote-property-type" name="property_type" required aria-describedby="quote-property-type-error" class="w-full px-4 py-3 bg-cream/10 border border-cream/20 text-cream rounded-lg focus:border-lime focus:ring-2 focus:ring-lime/20 transition-all [&>option]:bg-forest [&>option]:text-cream">
+              <option value="">Select property type...</option>
+              {propertyTypes.map((type) => (
+                <option value={type}>{type}</option>
+              ))}
+            </select>
+            <span id="quote-property-type-error" class="sr-only" hidden>Error: please select a property type.</span>
+          </div>
+        </fieldset>
+
+        <!-- Step 2: Services -->
+        <fieldset data-step="1" hidden class="space-y-6">
+          <div>
+            <span id="quote-services-label" class="block text-sm font-bold text-cream mb-3 uppercase tracking-wider">
+              Services Needed <span class="text-lime">*</span>
+            </span>
+            <div role="group" aria-labelledby="quote-services-label" aria-describedby="quote-services-error" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {services.map((service) => (
+                <label class="flex items-center gap-3 p-4 bg-cream/10 border border-cream/20 rounded-lg cursor-pointer hover:border-lime transition-colors">
+                  <input
+                    type="checkbox"
+                    name="services_needed"
+                    value={service}
+                    class="w-5 h-5 text-lime focus:ring-lime rounded"
+                  />
+                  <span class="text-cream">{service}</span>
+                </label>
+              ))}
+            </div>
+            <span id="quote-services-error" class="sr-only" hidden>Error: please select at least one service.</span>
+          </div>
+        </fieldset>
+
+        <!-- Step 3: Contact Info -->
+        <fieldset data-step="2" hidden class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="quote-full-name" class="block text-sm font-bold text-cream mb-2 uppercase tracking-wider">
+                Full Name <span class="text-lime">*</span>
+              </label>
+              <input
+                id="quote-full-name"
+                type="text"
+                name="full_name"
+                required
+                aria-describedby="quote-full-name-error"
+                class="w-full px-4 py-3 bg-cream/10 border border-cream/20 text-cream placeholder:text-cream/40 rounded-lg focus:border-lime focus:ring-2 focus:ring-lime/20 transition-all"
+                placeholder="John Smith"
+              />
+              <span id="quote-full-name-error" class="sr-only" hidden>Error: please enter your full name.</span>
+            </div>
+            <div>
+              <label for="quote-phone-number" class="block text-sm font-bold text-cream mb-2 uppercase tracking-wider">
+                Phone Number <span class="text-lime">*</span>
+              </label>
+              <input
+                id="quote-phone-number"
+                type="tel"
+                name="phone_number"
+                required
+                aria-describedby="quote-phone-number-error"
+                class="w-full px-4 py-3 bg-cream/10 border border-cream/20 text-cream placeholder:text-cream/40 rounded-lg focus:border-lime focus:ring-2 focus:ring-lime/20 transition-all"
+                placeholder="(704) 555-0142"
+              />
+              <span id="quote-phone-number-error" class="sr-only" hidden>Error: please enter your phone number.</span>
+            </div>
+          </div>
+          <div>
+            <label for="quote-email-address" class="block text-sm font-bold text-cream mb-2 uppercase tracking-wider">
+              Email Address <span class="text-lime">*</span>
+            </label>
+            <input
+              id="quote-email-address"
+              type="email"
+              name="email_address"
+              required
+              aria-describedby="quote-email-address-error"
+              class="w-full px-4 py-3 bg-cream/10 border border-cream/20 text-cream placeholder:text-cream/40 rounded-lg focus:border-lime focus:ring-2 focus:ring-lime/20 transition-all"
+              placeholder="john@example.com"
+            />
+            <span id="quote-email-address-error" class="sr-only" hidden>Error: please enter your email address.</span>
+          </div>
+          <div>
+            <label for="quote-property-address" class="block text-sm font-bold text-cream mb-2 uppercase tracking-wider">
+              Property Address <span class="text-lime">*</span>
+            </label>
+            <input
+              id="quote-property-address"
+              type="text"
+              name="property_address"
+              required
+              aria-describedby="quote-property-address-error"
+              class="w-full px-4 py-3 bg-cream/10 border border-cream/20 text-cream placeholder:text-cream/40 rounded-lg focus:border-lime focus:ring-2 focus:ring-lime/20 transition-all"
+              placeholder="123 Main St, Charlotte, NC"
+            />
+            <span id="quote-property-address-error" class="sr-only" hidden>Error: please enter your property address.</span>
+          </div>
+        </fieldset>
+
+        <!-- Step 4: Additional Details -->
+        <fieldset data-step="3" hidden class="space-y-6">
+          <div>
+            <label for="quote-additional-details" class="block text-sm font-bold text-cream mb-2 uppercase tracking-wider">
+              Additional Details
+            </label>
+            <textarea
+              id="quote-additional-details"
+              name="additional_details"
+              rows="5"
+              class="w-full px-4 py-3 bg-cream/10 border border-cream/20 text-cream placeholder:text-cream/40 rounded-lg focus:border-lime focus:ring-2 focus:ring-lime/20 transition-all resize-none"
+              placeholder="Tell us about your project, any specific concerns, preferred dates, etc."
+            ></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Navigation Buttons -->
+        <div class="flex gap-4 mt-8">
+          <button type="button" data-nav="back" hidden class="px-6 py-3 bg-cream/10 text-cream font-bold rounded-lg hover:bg-cream/20 transition-colors">
+            ← Back
+          </button>
+          <button type="button" data-nav="next" class="flex-1 px-6 py-3 bg-lime hover:bg-lime-dark text-forest font-bold rounded-lg transition-all">
+            Next →
+          </button>
+          <button type="submit" hidden class="flex-1 px-6 py-3 bg-lime hover:bg-lime-dark text-forest font-bold rounded-lg transition-all">
+            Submit Request
+          </button>
+        </div>
+      </form>
+
+      <!-- Success Message -->
+      <div id={`form-success-${FORM_ID}`} role="status" aria-live="polite" hidden class="mt-8 bg-lime/10 border-2 border-lime rounded-2xl p-8 text-center">
+        <div class="text-5xl mb-4">✓</div>
+        <h3 class="font-display font-bold text-2xl text-cream mb-2">Thank You!</h3>
+        <p class="text-cream/70">
+          We've received your estimate request. We'll contact you within 24 hours with your personalized quote.
+        </p>
+      </div>
+
+      <!-- Error Message -->
+      <div id={`form-error-${FORM_ID}`} role="alert" aria-live="assertive" hidden class="mt-8 bg-destructive/10 border-2 border-destructive rounded-2xl p-8 text-center">
+        <h3 class="font-display font-bold text-2xl text-destructive mb-2">Oops!</h3>
+        <p class="text-cream/70">
+          Something went wrong. Please try again or call us at (704) 555-0142.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form[data-form-id]');
+    if (!form) return;
+
+    const fieldsets = form.querySelectorAll<HTMLFieldSetElement>('fieldset[data-step]');
+    const nextBtn = form.querySelector<HTMLButtonElement>('[data-nav="next"]');
+    const backBtn = form.querySelector<HTMLButtonElement>('[data-nav="back"]');
+    const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]');
+    const indicators = document.querySelectorAll('.step-indicator');
+
+    if (!nextBtn || !backBtn || !submitBtn) return;
+
+    let currentStep = 0;
+
+    const updateStep = () => {
+      fieldsets.forEach((fieldset, index) => {
+        fieldset.hidden = index !== currentStep;
+      });
+
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        const circle = indicator.querySelector<HTMLElement>('div');
+        const text = indicator.querySelector<HTMLElement>('span');
+        if (!circle) return;
+
+        if (index < currentStep) {
+          circle.className = 'w-10 h-10 rounded-full bg-lime text-forest flex items-center justify-center font-bold';
+          circle.textContent = '✓';
+          if (text) text.className = 'hidden md:inline text-sm font-medium text-cream';
+        } else if (index === currentStep) {
+          circle.className = 'w-10 h-10 rounded-full bg-lime text-forest flex items-center justify-center font-bold';
+          circle.textContent = (index + 1).toString();
+          if (text) text.className = 'hidden md:inline text-sm font-medium text-cream';
+        } else {
+          circle.className = 'w-10 h-10 rounded-full bg-cream/10 text-cream/60 flex items-center justify-center font-bold';
+          circle.textContent = (index + 1).toString();
+          if (text) text.className = 'hidden md:inline text-sm font-medium text-cream/50';
+        }
+      });
+
+      // Update buttons
+      backBtn.hidden = currentStep === 0;
+
+      const isLastStep = currentStep === fieldsets.length - 1;
+      nextBtn.hidden = isLastStep;
+      submitBtn.hidden = !isLastStep;
+    };
+
+    nextBtn.addEventListener('click', () => {
+      // Validate current step
+      const currentFieldset = fieldsets[currentStep];
+      const requiredFields = currentFieldset.querySelectorAll<HTMLInputElement>('[required]');
+      let isValid = true;
+
+      requiredFields.forEach(field => {
+        const describedBy = field.getAttribute('aria-describedby');
+        const errorEl = describedBy ? document.getElementById(describedBy) : null;
+        if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+          isValid = false;
+          field.classList.add('border-destructive');
+          field.setAttribute('aria-invalid', 'true');
+          if (errorEl) errorEl.hidden = false;
+        } else {
+          field.classList.remove('border-destructive');
+          field.removeAttribute('aria-invalid');
+          if (errorEl) errorEl.hidden = true;
+        }
+      });
+
+      // Check if at least one service is selected on step 2
+      if (currentStep === 1) {
+        const serviceCheckboxes = currentFieldset.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+        const anyChecked = Array.from(serviceCheckboxes).some(cb => cb.checked);
+        const servicesError = document.getElementById('quote-services-error');
+        serviceCheckboxes.forEach(cb => {
+          if (anyChecked) {
+            cb.removeAttribute('aria-invalid');
+          } else {
+            cb.setAttribute('aria-invalid', 'true');
+          }
+        });
+        if (!anyChecked) {
+          isValid = false;
+          if (servicesError) servicesError.hidden = false;
+        } else if (servicesError) {
+          servicesError.hidden = true;
+        }
+      }
+
+      if (isValid && currentStep < fieldsets.length - 1) {
+        currentStep++;
+        updateStep();
+      } else if (!isValid) {
+        const firstInvalid = currentFieldset.querySelector<HTMLElement>('[aria-invalid="true"]');
+        if (firstInvalid) firstInvalid.focus();
+      }
+    });
+
+    backBtn.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateStep();
+      }
+    });
+
+    updateStep();
+  });
+</script>
+

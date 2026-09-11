@@ -1,0 +1,15 @@
+---
+import siteConfig from '../siteConfig.json'
+
+// Cast to string | null: siteConfig.json currently has this set to the
+// literal value null, so without this cast TypeScript assumes it can NEVER
+// be a string later — which breaks the moment you set a real domain here.
+const configuredUrl = siteConfig.website_url as string | null;
+
+const baseUrl = configuredUrl
+  ? configuredUrl.replace(/\/$/, '')
+  : Astro.site?.href.replace(/\/$/, '') ?? Astro.url.origin;
+const canonicalUrl = `${baseUrl}${Astro.url.pathname}`;
+---
+
+<link rel="canonical" href={canonicalUrl} />

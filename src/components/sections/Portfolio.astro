@@ -1,0 +1,105 @@
+---
+import ScrollReveal from '../ScrollReveal.tsx';
+
+const projects = [
+  {
+    number: '01',
+    title: 'Driveway Restoration',
+    location: 'West Charlotte',
+    image: '/images/portfolio/driveway-restoration.jpg',
+    tag: 'Driveway'
+  },
+  {
+    number: '02',
+    title: 'Full Exterior Wash',
+    location: 'Huntersville',
+    image: '/images/portfolio/full-exterior-wash.jpg',
+    tag: 'House Wash'
+  },
+  {
+    number: '03',
+    title: 'Deck Transformation',
+    location: 'Fort Mill',
+    image: '/images/portfolio/deck-transformation.jpg',
+    tag: 'Deck'
+  },
+  {
+    number: '04',
+    title: 'Roof Soft Wash',
+    location: 'Concord',
+    image: '/images/portfolio/roof-soft-wash.jpg',
+    tag: 'Roof'
+  },
+  {
+    number: '05',
+    title: 'Paver Patio Clean',
+    location: 'Indian Trail',
+    image: '/images/portfolio/paver-patio.jpg',
+    tag: 'Patio'
+  },
+  {
+    number: '06',
+    title: 'Siding Deep Clean',
+    location: 'Matthews',
+    image: '/images/portfolio/siding-deep-clean.jpg',
+    tag: 'Siding'
+  }
+];
+---
+
+<section id="portfolio" class="py-20 md:py-32 bg-cream-dark">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <ScrollReveal client:visible>
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-0.5 bg-lime"></div>
+            <span class="text-sm font-bold text-forest uppercase tracking-wider">— Recent Projects</span>
+          </div>
+          <h2 class="font-display font-bold text-4xl md:text-6xl text-forest leading-tight">
+            Our latest<br/>
+            <span class="font-serif italic text-lime">transformations.</span>
+          </h2>
+        </div>
+        <a href="/index#get-free-estimate" class="inline-flex items-center gap-2 text-forest hover:text-lime font-bold transition-colors group self-start md:self-auto">
+          See your project here
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </ScrollReveal>
+
+    <!-- Portfolio Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, index) => (
+        <ScrollReveal client:visible delay={index * 100}>
+          <div class="group relative bg-card rounded-2xl overflow-hidden shadow-layered hover:shadow-layered-lg transition-all duration-300">
+            {/* Image */}
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                width="800"
+                height="600"
+              />
+              <div class="absolute top-4 left-4 bg-forest/90 text-lime px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm">
+                {project.number}
+              </div>
+              <div class="absolute top-4 right-4 bg-lime/90 text-forest px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm">
+                {project.tag}
+              </div>
+            </div>
+            
+            {/* Content */}
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl text-foreground mb-1">{project.title}</h3>
+              <p class="text-muted-foreground text-sm">{project.location}</p>
+            </div>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+  </div>
+</section>
