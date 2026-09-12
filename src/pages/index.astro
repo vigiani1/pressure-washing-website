@@ -1,0 +1,265 @@
+---
+import Layout from '../components/Layout.astro';
+import ScrollReveal from '../components/ScrollReveal.tsx';
+import StatCounter from '../components/StatCounter.tsx';
+import ServicesCarousel from '../components/ServicesCarousel.tsx';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.tsx';
+import Portfolio from '../components/sections/Portfolio.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+
+const services = [
+  {
+    number: '01',
+    title: 'Driveway & Concrete Cleaning',
+    description: 'Remove years of embedded oil stains, tire marks, and organic growth from your driveway, walkways, and concrete surfaces. Our specialized surface cleaner restores the original look without etching or damage.',
+    image: 'https://images.pexels.com/photos/4876676/pexels-photo-4876676.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    tags: ['Driveways', 'Walkways', 'Patios'],
+  },
+  {
+    number: '02',
+    title: 'House Washing',
+    description: 'Gentle soft wash for vinyl, brick, stucco, and Hardie board siding. We eliminate mold, mildew, algae, and pollen without damaging your home\'s exterior or landscaping.',
+    image: 'https://images.pexels.com/photos/5353890/pexels-photo-5353890.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    tags: ['Vinyl Siding', 'Brick', 'Stucco'],
+  },
+  {
+    number: '03',
+    title: 'Deck & Patio Restoration',
+    description: 'Bring your deck or patio back to life. We clean and brighten wood and composite surfaces, removing gray oxidation, mold, and grime to prepare for staining or sealing.',
+    image: 'https://images.pexels.com/photos/19632196/pexels-photo-19632196.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    tags: ['Wood Decks', 'Composite', 'Sealing'],
+  },
+  {
+    number: '04',
+    title: 'Roof Soft Wash',
+    description: 'Safe, low-pressure roof cleaning that kills moss, lichen, and black streaks at the source. Our method extends roof life and keeps it looking new without harsh pressure.',
+    image: 'https://images.pexels.com/photos/4394224/pexels-photo-4394224.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    tags: ['Asphalt Shingle', 'Tile', 'Metal Roof'],
+  },
+  {
+    number: '05',
+    title: 'Commercial Exterior',
+    description: 'Keep your business looking professional. We handle storefronts, office buildings, parking lots, and warehouse exteriors with flexible scheduling that minimizes disruption.',
+    image: 'https://images.pexels.com/photos/25002456/pexels-photo-25002456.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    tags: ['Storefronts', 'Parking Lots', 'Warehouses'],
+  },
+];
+
+const beforeAfterSets = [
+  {
+    before: '/images/before-after/driveway-before.jpg',
+    after: '/images/before-after/driveway-after.jpg',
+    label: 'Driveway Restoration',
+  },
+  {
+    before: '/images/before-after/siding-before.jpg',
+    after: '/images/before-after/siding-after.jpg',
+    label: 'Siding Renewal',
+  },
+  {
+    before: '/images/before-after/patio-before.jpg',
+    after: '/images/before-after/patio-after.jpg',
+    label: 'Patio Revival',
+  },
+];
+---
+
+<Layout title="PressurePro — Premium Exterior Cleaning in Charlotte, NC">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-forest/95 backdrop-blur-md border-b border-lime/10">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="/" class="flex items-center gap-2">
+          <span class="font-display font-bold text-2xl text-lime">PressurePro</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-cream/80 hover:text-lime text-sm font-medium transition-colors">Services</a>
+          <a href="#before-after" class="text-cream/80 hover:text-lime text-sm font-medium transition-colors">Before & After</a>
+          <a href="#portfolio" class="text-cream/80 hover:text-lime text-sm font-medium transition-colors">Portfolio</a>
+          <a href="#get-free-estimate" class="bg-lime hover:bg-lime-dark text-forest font-bold px-5 py-2.5 rounded-lg transition-all text-sm">
+            Get Free Estimate
+          </a>
+        </div>
+        <a href="tel:7045550142" class="md:hidden text-lime font-bold text-sm">(704) 555-0142</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center bg-forest overflow-hidden pt-16 md:pt-20">
+      <div class="absolute inset-0">
+        <img
+          src="https://images.pexels.com/photos/4876639/pexels-photo-4876639.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+          alt="Professional pressure washing service"
+          class="w-full h-full object-cover opacity-30"
+          width="940"
+          height="650"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-forest via-forest/90 to-forest/40"></div>
+      </div>
+
+      <div class="relative container mx-auto px-4 py-20">
+        <div class="max-w-2xl">
+          <ScrollReveal client:visible>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-0.5 bg-lime"></div>
+              <span class="text-sm font-bold text-lime uppercase tracking-wider">Charlotte's Premier Exterior Cleaning</span>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal client:visible delay={100}>
+            <h1 class="font-display font-bold text-5xl md:text-7xl text-cream leading-[1.1] mb-6">
+              Make Your Home<br/>
+              <span class="font-serif italic text-lime">Look Brand New.</span>
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal client:visible delay={200}>
+            <p class="text-cream/70 text-lg md:text-xl mb-8 max-w-xl leading-relaxed">
+              Professional pressure washing and soft washing for driveways, siding, decks, roofs, and commercial properties. Serving Charlotte and surrounding areas.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal client:visible delay={300}>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#get-free-estimate" class="inline-flex items-center justify-center gap-2 bg-lime hover:bg-lime-dark text-forest font-bold px-8 py-4 rounded-lg transition-all text-lg group">
+                Get Your Free Quote
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a href="tel:7045550142" class="inline-flex items-center justify-center gap-2 border-2 border-cream/30 hover:border-lime text-cream hover:text-lime font-bold px-8 py-4 rounded-lg transition-all text-lg">
+                Call (704) 555-0142
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
+        <div class="w-6 h-10 border-2 border-cream/30 rounded-full flex items-start justify-center p-2">
+          <div class="w-1 h-2 bg-lime rounded-full animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 bg-forest-light">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <ScrollReveal client:visible>
+            <StatCounter client:visible end={2500} suffix="+" label="Projects Completed" />
+          </ScrollReveal>
+          <ScrollReveal client:visible delay={100}>
+            <StatCounter client:visible end={15} suffix="+" label="Years Experience" />
+          </ScrollReveal>
+          <ScrollReveal client:visible delay={200}>
+            <StatCounter client:visible end={100} suffix="%" label="Satisfaction" />
+          </ScrollReveal>
+          <ScrollReveal client:visible delay={300}>
+            <StatCounter client:visible end={24} label="Hour Quotes" />
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 md:py-32 bg-cream">
+      <div class="container mx-auto px-4">
+        <ScrollReveal client:visible>
+          <div class="text-center mb-12">
+            <div class="flex items-center justify-center gap-3 mb-4">
+              <div class="w-12 h-0.5 bg-lime"></div>
+              <span class="text-sm font-bold text-forest uppercase tracking-wider">— What We Do</span>
+              <div class="w-12 h-0.5 bg-lime"></div>
+            </div>
+            <h2 class="font-display font-bold text-4xl md:text-6xl text-forest leading-tight">
+              Services built for<br/>
+              <span class="font-serif italic text-lime">every surface.</span>
+            </h2>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal client:visible delay={150}>
+          <ServicesCarousel client:visible services={services} />
+        </ScrollReveal>
+      </div>
+    </section>
+
+    <!-- Before & After -->
+    <section id="before-after" class="py-20 md:py-32 bg-cream-dark">
+      <div class="container mx-auto px-4">
+        <ScrollReveal client:visible>
+          <div class="text-center mb-12">
+            <div class="flex items-center justify-center gap-3 mb-4">
+              <div class="w-12 h-0.5 bg-lime"></div>
+              <span class="text-sm font-bold text-forest uppercase tracking-wider">— Real Results</span>
+              <div class="w-12 h-0.5 bg-lime"></div>
+            </div>
+            <h2 class="font-display font-bold text-4xl md:text-6xl text-forest leading-tight">
+              See the <span class="font-serif italic text-lime">difference.</span>
+            </h2>
+          </div>
+        </ScrollReveal>
+
+        <div class="max-w-4xl mx-auto space-y-8">
+          {beforeAfterSets.map((set, index) => (
+            <ScrollReveal client:visible delay={index * 100}>
+              <div>
+                <h3 class="font-display font-bold text-xl text-forest mb-4">{set.label}</h3>
+                <BeforeAfterSlider
+                  client:visible
+                  beforeImage={set.before}
+                  afterImage={set.after}
+                  className="aspect-[16/9]"
+                />
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <Portfolio />
+
+    <!-- Quote Form -->
+    <QuoteForm />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-near-black text-cream py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div>
+          <span class="font-display font-bold text-2xl text-lime block mb-4">PressurePro</span>
+          <p class="text-cream/60 leading-relaxed">
+            Premium exterior cleaning services for residential and commercial properties. Serving Charlotte, NC and surrounding areas.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-lime uppercase tracking-wider text-sm mb-4">Contact</h4>
+          <ul class="space-y-2 text-cream/60">
+            <li><a href="tel:7045550142" class="hover:text-lime transition-colors">(704) 555-0142</a></li>
+            <li><a href="mailto:info@pressurepro.com" class="hover:text-lime transition-colors">info@pressurepro.com</a></li>
+            <li>Charlotte, NC</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lime uppercase tracking-wider text-sm mb-4">Service Areas</h4>
+          <ul class="space-y-2 text-cream/60">
+            <li>Charlotte</li>
+            <li>Huntersville</li>
+            <li>Concord</li>
+            <li>Fort Mill</li>
+            <li>Matthews</li>
+            <li>Indian Trail</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-cream/10 pt-8 text-center text-cream/40 text-sm">
+        <p>&copy; {new Date().getFullYear()} PressurePro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
